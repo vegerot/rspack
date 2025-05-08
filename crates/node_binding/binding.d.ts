@@ -177,6 +177,7 @@ export declare class JsChunk {
 }
 
 export declare class JsChunkGraph {
+  hasChunkEntryDependentChunks(chunk: JsChunk): boolean
   getChunkModules(chunk: JsChunk): Module[]
   getChunkEntryModules(chunk: JsChunk): Module[]
   getNumberOfEntryModules(chunk: JsChunk): number
@@ -1454,10 +1455,12 @@ export interface RawAssetGeneratorOptions {
   publicPath?: "auto" | JsFilename
   dataUrl?: RawAssetGeneratorDataUrlOptions | ((source: Buffer, context: RawAssetGeneratorDataUrlFnCtx) => string)
   importMode?: "url" | "preserve"
+  binary?: boolean
 }
 
 export interface RawAssetInlineGeneratorOptions {
   dataUrl?: RawAssetGeneratorDataUrlOptions | ((source: Buffer, context: RawAssetGeneratorDataUrlFnCtx) => string)
+  binary?: boolean
 }
 
 export interface RawAssetParserDataUrl {
@@ -1479,6 +1482,7 @@ export interface RawAssetResourceGeneratorOptions {
   outputPath?: JsFilename
   publicPath?: "auto" | JsFilename
   importMode?: "url" | "preserve"
+  binary?: boolean
 }
 
 export interface RawBannerPluginOptions {
